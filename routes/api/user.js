@@ -3,6 +3,7 @@ const router = express.Router()
 const ibmdb = require('ibm_db');
 
 let connStr = "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-08.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=jfk88129;PWD=kz2hrcjn8tw^j1hz;";
+
 router.get('/', (req,res)=>{
     res.render('reportMain')
 })
