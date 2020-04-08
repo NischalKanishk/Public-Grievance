@@ -21,14 +21,15 @@ router.post('/forminput',(req,res)=>{
     const address = req.body.address
     const city = req.body.city
     const zip = req.body.zip
-    const report = req.body.report
+    const reportext = req.body.report
     const department = req.body.department
+    console.log(reporttext);
 console.log(department);
     ibmdb.open(connStr,function(err,conn){
         if(err){
             Console.log(err);
         }else if(department == 'Education'){
-            var education = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+report+"' , '"+department+"');";
+            var education = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
         conn.query(education,function(err,data){
             if(err){
                 console.log(err);
