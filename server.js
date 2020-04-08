@@ -23,5 +23,6 @@ app.get('/', (req, res)=>{
 // app.use('/api/search', require('./routes/api/search'))
 app.use('/user', require('./routes/api/user'))
 app.use('/admin', require('./routes/api/admin'))
+
 //Server Start
 app.listen(PORT, ()=> console.log(`Server started at ${PORT}`))
