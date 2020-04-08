@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.get('/', (req, res)=>{
     res.render('index.ejs')
 })
-
 //Routes
 // app.use('/api/search', require('./routes/api/search'))
 // app.use('/api/user', require('./routes/api/user'))
