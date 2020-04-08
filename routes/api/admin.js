@@ -1,10 +1,6 @@
 //Dependencies
 const express = require('express')
 const router  = express.Router()
-const bcrypt = require('bcryptjs')
-
-
-
 
 //Routes
 router.get('/login', (req, res)=>{
@@ -22,6 +18,10 @@ router.post('/login', (req, res)=>{
        res.redirect('back')
        console.log('Wrong creds')
    }
+})
+
+router.get('/panel', (req, res)=>{
+    res.render('panel')
 })
 
 
