@@ -4,7 +4,7 @@ const express = require('express')
 const router  = express.Router()
 const bcrypt = require('bcryptjs')
 const ibmdb = require('ibm_db');
-//required to connect to database
+//required to connect to database never change this copy to all the place where u want something to send to database
 // let connStr = "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-lon02-01.services.eu-gb.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=rmw15324;PWD=md1tz7z-8x6p6h5d;";
 
 //Routes
@@ -20,6 +20,7 @@ router.post('/login', (req, res)=>{
     //     if(err){
     //         console.log(err);
     //     }else{
+        //  make a insert or select or any statement and keep that in a variable and use query to send and close the connection
     //         var str ="INSERT INTO RMW15324.USERS (username , password) VALUES ('"+user+"' , '"+pass+"');";
     //         conn.query(str,function(err,data){
     //             if(err){
@@ -41,6 +42,10 @@ router.post('/login', (req, res)=>{
        res.redirect('back')
        console.log('Wrong creds')
    }
+})
+
+router.get('/panel', (req, res)=>{
+    res.render('panel')
 })
 
 
