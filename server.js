@@ -20,7 +20,7 @@ app.get('/', (req, res)=>{
     res.render('index.ejs')
 })
 //Routes
-// app.use('/api/search', require('./routes/api/search'))
+app.use('/search', require('./routes/api/search'))
 app.use('/user', require('./routes/api/user'))
 app.use('/admin', require('./routes/api/admin'))
 
