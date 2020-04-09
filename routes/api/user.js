@@ -21,7 +21,7 @@ router.post('/forminput',(req,res)=>{
     const address = req.body.address
     const city = req.body.city
     const zip = req.body.zip
-    const reportext = req.body.report
+    const reporttext = req.body.reportinfo
     const department = req.body.department
     console.log(reporttext);
 console.log(department);
@@ -40,6 +40,30 @@ console.log(department);
                 });
             }
         });
+        }else if( department == 'Health'){
+            var health = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(health,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }else if(department == 'Civil Services'){
+            var health = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(health,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
         }
     })
 
