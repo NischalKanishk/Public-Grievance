@@ -28,7 +28,7 @@ console.log(department);
     ibmdb.open(connStr,function(err,conn){
         if(err){
             Console.log(err);
-        }else if(department == 'Education'){
+        }else if(department === 'Education'){
             var education = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
         conn.query(education,function(err,data){
             if(err){
@@ -40,8 +40,20 @@ console.log(department);
                 });
             }
         });
-        }else if( department == 'Health'){
-            var health = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+        }else if( department === 'Health'){
+            var health = "INSERT INTO JFK88129.HEALTH (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(health,function(err,data){
+                if(err){
+                    console.log(err.message);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }else if(department === 'Civil Services'){
+            var health = "INSERT INTO JFK88129.CIVIL (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
             conn.query(health,function(err,data){
                 if(err){
                     console.log(err);
@@ -52,9 +64,65 @@ console.log(department);
                     });
                 }
             });
-        }else if(department == 'Civil Services'){
-            var health = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
-            conn.query(health,function(err,data){
+            // //n>Agriculture</option>
+            // <option>PWC</option>
+            // <option>Transport</option>
+            // <option>Electricity</option>
+        }else if(department === 'Finance'){
+            var finance = "INSERT INTO JFK88129.FINANCE (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(finance,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }
+        else if(department === 'Agriculture'){
+            var agriculture = "INSERT INTO JFK88129.AGRICULTURE (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(agriculture,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }
+        else if(department === 'PWC'){
+            var pwc = "INSERT INTO JFK88129.PWC (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(pwc,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }
+        else if(department == 'Transport'){
+            var transport = "INSERT INTO JFK88129.TRANSPORT (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(transport,function(err,data){
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log("db closed");
+                        res.redirect("/");
+                    });
+                }
+            });
+        }
+        else if(department == 'Electricity'){
+            var electricity = "INSERT INTO JFK88129.ELECTRICITY (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
+            conn.query(electricity,function(err,data){
                 if(err){
                     console.log(err);
                 }else{
