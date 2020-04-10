@@ -25,6 +25,7 @@ const department = req.body.department
                     conn.close(function(){
                         console.log(data);
                         res.render("searchinfo",{info : data});
+                        
                     });
                     
                 }

@@ -1,21 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hi
-    <p><%= info.FIRSTNAME %></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+<%- include ('partials/header.ejs') %>
+<div class="container">   
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Report</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < info.length; i++) { %>        
+                <tr>
+                  <th scope="row"><%= info[i].ID %></th>
+                  <td><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></td>
+                  <td><%= info[i].EMAIL %></td>
+                  <td><%= info[i].REPORT %></td>
+                  <td id="status"></td>
 
-</body>
-</html>
+              </tr>
+              <% } %>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+      <script>
+          var subm = <%= info[0].SUBMITTED %>
+          var acc = <%= info[0].ACCEPTED %>
+          var rej = <%= info[0].REJECTED %>
+          var res = <%= info[0].RESOLVED %>
+          if(subm == 1) document.getElementById('status').innerHTML = subm
+          else if(acc == 1) document.getElementById('status').innerHTML = acc
+          else if(rej == 1) document.getElementById('status').innerHTML = rej
+          else if(res == 1) document.getElementById('status').innerHTML = res
+      </script>
+
+<%- include ('partials/footer.ejs') %>
