@@ -1,1 +1,50 @@
-<html>Panel</html>
+<%- include('partials/header.ejs') %>
+<div class="container">   
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Report</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% for(var i=0; i < info.length; i++) { %>        
+              <tr>
+                
+                <th scope="row"><%= info[i].ID %></th>
+                <td><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></td>
+                <td><%= info[i].EMAIL %></td>
+                <td><%= info[i].PHONENUMBER %></td>
+                <td><%= info[i].ADDRESS %></td>
+                <td><%= info[i].CITY %></td>
+                <td><%= info[i].ZIP %></td>
+                <td><%= info[i].REPORT %></td>
+                <td><%= info[i].DEPARTMENT %></td>
+                <td><%= info[i].STATUS %></td>
+                <td id="status"></td>
+
+            </tr>
+            <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <script>
+    var subm = <%= info[0].SUBMITTED %>
+    var acc = <%= info[0].ACCEPTED %>
+    var rej = <%= info[0].REJECTED %>
+    var res = <%= info[0].RESOLVED %>
+    if(subm == 1) document.getElementById('status').innerText = "Submitted"
+    else if(acc == 1) document.getElementById('status').innerText = "Accepted"
+    else if(rej == 1) document.getElementById('status').innerText = "Rejected"
+    else if(res == 1) document.getElementById('status').innerText = "Resolved"
+</script>
+
+
+
+<%- include('partials/footer.ejs') %>

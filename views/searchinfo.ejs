@@ -26,14 +26,14 @@
     </div>
 
 
-    
+
       <script>
           var subm = <%= info[0].SUBMITTED %>
           var acc = <%= info[0].ACCEPTED %>
           var rej = <%= info[0].REJECTED %>
           var res = <%= info[0].RESOLVED %>
           if(subm == 1) document.getElementById('status').innerHTML = subm
-          else if(acc == 1) document.getElementById('status').innerHTML = acc
+          else if(acc == 1) document.getElementById('status').innerText = acc
           else if(rej == 1) document.getElementById('status').innerHTML = rej
           else if(res == 1) document.getElementById('status').innerHTML = res
       </script>
