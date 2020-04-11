@@ -25,24 +25,131 @@ router.post('/login', (req, res)=>{
    }
 })
 
-router.get('/panel', (req, res)=>{
+router.get('/panel', (req, res) =>{
+    res.render('panel')
+})
+
+
+router.post('/panel', (req, res)=>{
     ibmdb.open(connStr,function(err,conn){
+        const department = req.body.department
         if(err){
             console.log(err);
-        }
-        console.log("connection successful");
-            var inputdata = "SELECT * FROM JFK88129.EDUCATION , JFK88129.AGRICULTURE , JFK88129.HEALTH;"
+        } 
+        else if(department === 'Education'){
+            var inputdata = "SELECT * FROM JFK88129.EDUCATION;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
-                    console.log(err.message);
+                    console.log(err);
                 }else{
-                    conn.close(() => {
-                        console.log(data)
-                        res.render("panel",{info : data});               
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("display",{info : data});
+                        
                     });
+                    
                 }
             });
-    });
+        }   
+        else if(department === 'Health'){
+            var inputdata = "SELECT * FROM JFK88129.HEALTH;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        else if(department === 'Civil Services'){
+            var inputdata = "SELECT * FROM JFK88129.CIVIL;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        if(department === 'Electricity'){
+            var inputdata = "SELECT * FROM JFK88129.ELECTRICITY;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        if(department === 'Finance'){
+            var inputdata = "SELECT * FROM JFK88129.FINANCE;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        if(department === 'Agriculture'){
+            var inputdata = "SELECT * FROM JFK88129.AGRICULTURE;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        if(department === 'Transport'){
+            var inputdata = "SELECT * FROM JFK88129.TRANSPORT;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+        if(department === 'PWC'){
+            var inputdata = "SELECT * FROM JFK88129.PWC;"
+            conn.query(inputdata,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                conn.close(function(){
+                    console.log(data);
+                    res.render("display",{info : data});
+                    
+                    });     
+                }
+            });
+        }
+    })
 })
 
 
