@@ -89,24 +89,31 @@
         </li>
       </ul> -->
     </nav>
-    <section class="container">
-      <% for(var i=0; i < info.length; i++) { %>
-      <div class="posts">
-        <div class="post bg-white p-1 my-1">
-          <div>
-           
-             
-              <h4><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></h4>
-            </a>
-          </div>
-          <div>
-            <p class="my-1">
-              <%= info[i].REPORT %>
-            </p>
-             <p class="post-date">
-              <%= info[i].ID %>
-            </p>
-            <button type="button" class="btn btn-light">
+    <div class="container">   
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">DEPARTMENT</th>
+            <th scope="col">Report</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < info.length; i++) { %>        
+                <tr>
+                  <th scope="row"><%= info[i].ID %></th>
+                  <td><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></td>
+                  <td><%= info[i].EMAIL %></td>
+                  <td><%= info[i].DEPARTMENT %></td>
+                  <td><%= info[i].REPORT %></td>
+                  <td><a class="ui red basic button" href="/admin/checkinfo?id=<%= info[i].ID %>&dept=<%= info[i].DEPARTMENT%>">CHECK</a></td>
+              </tr>
+              <% } %>
+        </tbody>
+      </table>
+            <!-- <button type="button" class="btn btn-light">
               <i class="fas fa-thumbs-up"></i>
               <span>Accept</span>
             </button>
@@ -117,13 +124,7 @@
             <button  type="button"class="btn btn-danger">
             <i class="fas fa-times"></i>
             <span>Reject</span>
-          </button>
-          </div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-    </section>
+          </button> -->
   </body>
 </html>
 
