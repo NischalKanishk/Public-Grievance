@@ -17,7 +17,16 @@
                   <td><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></td>
                   <td><%= info[i].EMAIL %></td>
                   <td><%= info[i].REPORT %></td>
-                  <td id="status"></td>
+                  <% if(info[i].ACCEPTED == 1){ %>
+                    <td>ACCEPTED</td> 
+                <% }else if(info[i].SUBMITTED == 1){ %>
+                    <td>SUBMITTED</td>
+                <% }else if(info[i].REJECTED == 1){ %>
+                    <td>REJECTED</td>
+                <% }else if(info[i].RESOLVED == 1){ %>
+                    <td>RESOLVED</td>
+                <% } %>
+
 
               </tr>
               <% } %>
@@ -26,16 +35,17 @@
     </div>
 
 
+ <script>
+          // var subm = <%= info[0].SUBMITTED %>
+          // var acc = <%= info[0].ACCEPTED %>
+          // var rej = <%= info[0].REJECTED %>
+          // var res = <%= info[0].RESOLVED %>
+          // if(subm == 1) document.getElementById('status').innerHTML = subm
+          // else if(acc == 1) document.getElementById('status').innerText = acc
+          // else if(rej == 1) document.getElementById('status').innerHTML = rej
+          // else if(res == 1) document.getElementById('status').innerHTML = res
 
-      <script>
-          var subm = <%= info[0].SUBMITTED %>
-          var acc = <%= info[0].ACCEPTED %>
-          var rej = <%= info[0].REJECTED %>
-          var res = <%= info[0].RESOLVED %>
-          if(subm == 1) document.getElementById('status').innerHTML = subm
-          else if(acc == 1) document.getElementById('status').innerText = acc
-          else if(rej == 1) document.getElementById('status').innerHTML = rej
-          else if(res == 1) document.getElementById('status').innerHTML = res
-      </script>
+
+    </script> 
 
 <%- include ('partials/footer.ejs') %>

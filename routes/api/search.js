@@ -17,8 +17,113 @@ const department = req.body.department
         }
         console.log("connection successful");
         if(department === 'Education'){
-            var inputdata = "SELECT * FROM JFK88129.EDUCATION WHERE id="+complaintnumber+";"
-            conn.query(inputdata,(err,data)=>{
+            var inputdata_education = "SELECT * FROM JFK88129.EDUCATION WHERE id="+complaintnumber+";"
+            conn.query(inputdata_education,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Health'){
+            var inputdata_health = "SELECT * FROM JFK88129.HEALTH WHERE id="+complaintnumber+";"
+            conn.query(inputdata_health,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Civil Services'){
+            var inputdata_civil = "SELECT * FROM JFK88129.CIVIL WHERE id="+complaintnumber+";"
+            conn.query(inputdata_civil,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Finance'){
+            var inputdata_finance = "SELECT * FROM JFK88129.FINANCE WHERE id="+complaintnumber+";"
+            conn.query(inputdata_finance,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Agriculture'){
+            var inputdata_agri = "SELECT * FROM JFK88129.AGRICULTURE WHERE id="+complaintnumber+";"
+            conn.query(inputdata_agri,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'PWC'){
+            var inputdata_pwc = "SELECT * FROM JFK88129.PWC WHERE id="+complaintnumber+";"
+            conn.query(inputdata_pwc,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Transport'){
+            var inputdata_transport = "SELECT * FROM JFK88129.TRANSPORT WHERE id="+complaintnumber+";"
+            conn.query(inputdata_transport,(err,data)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    conn.close(function(){
+                        console.log(data);
+                        res.render("searchinfo",{info : data});
+                        
+                    });
+                    
+                }
+            });
+        }
+        if(department === 'Electricity'){
+            var inputdata_electricity = "SELECT * FROM JFK88129.ELECTRICITY WHERE id="+complaintnumber+";"
+            conn.query(inputdata_electricity,(err,data)=>{
                 if(err){
                     console.log(err);
                 }else{
