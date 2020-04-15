@@ -6,6 +6,10 @@ const bodyParser = require('body-parser')
 const ejs = require('ejs')
 const path = require('path')
 
+// Routes:
+// /admin/panel - admin panel 
+// /search - search complaint
+// /search/getdata - list complaints in table
 
 
 //Middlewares
@@ -18,6 +22,9 @@ app.set('views', path.join(__dirname, 'views'))
 //Home routes
 app.get('/', (req, res)=>{
     res.render('index.ejs')
+})
+app.get('/contact', (req, res)=>{
+    res.render('contact.ejs')
 })
 //Routes
 app.use('/search', require('./routes/api/search'))
