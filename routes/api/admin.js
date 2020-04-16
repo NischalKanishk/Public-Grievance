@@ -4,7 +4,7 @@ const router  = express.Router()
 const bcrypt = require('bcryptjs')
 const ibmdb = require('ibm_db');
 
-let connStr = "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-08.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=jfk88129;PWD=kz2hrcjn8tw^j1hz;";
+let connStr = "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-08.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=hwl36879;PWD=mcm9c6x9zrm0@089;";
 
 
 //Routes
@@ -37,7 +37,7 @@ router.post('/panel', (req, res)=>{
             console.log(err);
         } 
         else if(department === 'Education'){
-            var inputdata = "SELECT * FROM JFK88129.EDUCATION;"
+            var inputdata = "SELECT * FROM HWL36879.EDUCATION;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -52,7 +52,7 @@ router.post('/panel', (req, res)=>{
             });
         }   
         else if(department === 'Health'){
-            var inputdata = "SELECT * FROM JFK88129.HEALTH;"
+            var inputdata = "SELECT * FROM HWL36879.HEALTH;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -66,7 +66,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         else if(department === 'Civil Services'){
-            var inputdata = "SELECT * FROM JFK88129.CIVIL;"
+            var inputdata = "SELECT * FROM HWL36879.CIVIL;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -80,7 +80,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         if(department === 'Electricity'){
-            var inputdata = "SELECT * FROM JFK88129.ELECTRICITY;"
+            var inputdata = "SELECT * FROM HWL36879.ELECTRICITY;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -94,7 +94,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         if(department === 'Finance'){
-            var inputdata = "SELECT * FROM JFK88129.FINANCE;"
+            var inputdata = "SELECT * FROM HWL36879.FINANCE;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -108,7 +108,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         if(department === 'Agriculture'){
-            var inputdata = "SELECT * FROM JFK88129.AGRICULTURE;"
+            var inputdata = "SELECT * FROM HWL36879.AGRICULTURE;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -122,7 +122,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         if(department === 'Transport'){
-            var inputdata = "SELECT * FROM JFK88129.TRANSPORT;"
+            var inputdata = "SELECT * FROM HWL36879.TRANSPORT;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -136,7 +136,7 @@ router.post('/panel', (req, res)=>{
             });
         }
         if(department === 'PWC'){
-            var inputdata = "SELECT * FROM JFK88129.PWC;"
+            var inputdata = "SELECT * FROM HWL36879.PWC;"
             conn.query(inputdata,(err,data)=>{
                 if(err){
                     console.log(err);
@@ -153,13 +153,13 @@ router.post('/panel', (req, res)=>{
 })
 
 router.get("/checkinfo",(req,res)=>{
-    var id = req.query.id;
+    var complaintnumber = req.query.complaintnumber;
     var department =req.query.dept;
     ibmdb.open(connStr,function(err,conn){
         if(err){
             Console.log(err);
         }else if(department === 'Education'){
-            var education = "SELECT * FROM JFK88129.EDUCATION WHERE ID="+id+";"
+            var education = "SELECT * FROM HWL36879.EDUCATION WHERE COMPLAINTNUMBER="+complaintnumber+";"
         conn.query(education,function(err,data){  //required
             if(err){
                 console.log(err);
@@ -170,7 +170,7 @@ router.get("/checkinfo",(req,res)=>{
             }
         });
         }else if( department === 'Health'){
-            var health = "SELECT * FROM JFK88129.HEALTH WHERE ID="+id+";"
+            var health = "SELECT * FROM HWL36879.HEALTH WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(health,function(err,data){
                 if(err){
                     console.log(err.message);
@@ -181,7 +181,7 @@ router.get("/checkinfo",(req,res)=>{
                 }
             });
         }else if(department === 'Civil Services'){
-            var health = "SELECT * FROM JFK88129.CIVIL WHERE ID="+id+";"
+            var health = "SELECT * FROM HWL36879.CIVIL WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(health,function(err,data){
                 if(err){
                     console.log(err);
@@ -196,7 +196,7 @@ router.get("/checkinfo",(req,res)=>{
             // <option>Transport</option>
             // <option>Electricity</option>
         }else if(department === 'Finance'){
-            var finance = "SELECT * FROM JFK88129.FINANCE WHERE ID="+id+";"
+            var finance = "SELECT * FROM HWL36879.FINANCE WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(finance,function(err,data){
                 if(err){
                     console.log(err);
@@ -208,7 +208,7 @@ router.get("/checkinfo",(req,res)=>{
             });
         }
         else if(department === 'Agriculture'){
-            var agriculture = "SELECT * FROM JFK88129.AGRICULTURE WHERE ID="+id+";"
+            var agriculture = "SELECT * FROM HWL36879.AGRICULTURE WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(agriculture,function(err,data){
                 if(err){
                     console.log(err);
@@ -220,7 +220,7 @@ router.get("/checkinfo",(req,res)=>{
             });
         }
         else if(department === 'PWC'){
-            var pwc = "SELECT * FROM JFK88129.PWC WHERE ID="+id+";"
+            var pwc = "SELECT * FROM HWL36879.PWC WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(pwc,function(err,data){
                 if(err){
                     console.log(err);
@@ -232,7 +232,7 @@ router.get("/checkinfo",(req,res)=>{
             });
         }
         else if(department === 'Transport'){
-            var transport = "SELECT * FROM JFK88129.TRANSPORT WHERE ID="+id+";"
+            var transport = "SELECT * FROM HWL36879.TRANSPORT WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(transport,function(err,data){
                 if(err){
                     console.log(err);
@@ -244,7 +244,7 @@ router.get("/checkinfo",(req,res)=>{
             });
         }
         else if(department === 'Electricity'){
-            var electricity = "SELECT * FROM JFK88129.ELECTRICITY WHERE ID="+id+";"
+            var electricity = "SELECT * FROM HWL36879.ELECTRICITY WHERE COMPLAINTNUMBER="+complaintnumber+";"
             conn.query(electricity,function(err,data){
                 if(err){
                     console.log(err);
@@ -260,116 +260,117 @@ router.get("/checkinfo",(req,res)=>{
 });
 
 router.get("/updateaccept",(req,res)=>{
-    var id = req.query.id;
+    var complaintnumber = req.query.complaintnumber;
     var department = req.query.dept;
     var accept = 1;
     var submitted = 0 ;
     var rejected = 0;
     var resolved = 0; 
+    console.log(complaintnumber)
     ibmdb.open(connStr,(err,conn)=>{
        if(err){
            console.log(err);
        }else if(department === 'Education'){
            console.log("updare rooute entered")
-                var update_education = "UPDATE JFK88129.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                var update_education = "UPDATE HWL36879.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                 conn.query(update_education,function(err,data){
                     if(err){
                         console.log(err);
                     }else{
                         conn.close(function(){
                             console.log("data updated");
-                            res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                            res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                        });
                     }
                 });
             }else if(department === 'Health'){
                 console.log("updare route entered")
-                     var update_health = "UPDATE JFK88129.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                     var update_health = "UPDATE HWL36879.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                      conn.query(update_health,function(err,data){
                          if(err){
                              console.log(err);
                          }else{
                              conn.close(function(){
                                  console.log("data updated");
-                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                             });
                          }
                      });
                  }else if(department === 'Civil Services'){
                     console.log("updare rooute entered")
-                         var update_civil = "UPDATE JFK88129.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                         var update_civil = "UPDATE HWL36879.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                          conn.query(update_civil,function(err,data){
                              if(err){
                                  console.log(err);
                              }else{
                                  conn.close(function(){
                                      console.log("data updated");
-                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                 });
                              }
                          });
                      }else if(department === 'Finance'){
                         console.log("updare rooute entered")
-                             var update_finance = "UPDATE JFK88129.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                             var update_finance = "UPDATE HWL36879.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                              conn.query(update_finance,function(err,data){
                                  if(err){
                                      console.log(err);
                                  }else{
                                      conn.close(function(){
                                          console.log("data updated");
-                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                     });
                                  }
                              });
                          }else if(department === 'Agriculture'){
                             console.log("updare rooute entered")
-                                 var update_agriculture = "UPDATE JFK88129.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                 var update_agriculture = "UPDATE HWL36879.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                  conn.query(update_agriculture,function(err,data){
                                      if(err){
                                          console.log(err);
                                      }else{
                                          conn.close(function(){
                                              console.log("data updated");
-                                             res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                             res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                         });
                                      }
                                  });
                              }else if(department === 'PWC'){
                                 console.log("updare rooute entered")
-                                     var update_pwc = "UPDATE JFK88129.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                     var update_pwc = "UPDATE HWL36879.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                      conn.query(update_pwc,function(err,data){
                                          if(err){
                                              console.log(err);
                                          }else{
                                              conn.close(function(){
                                                  console.log("data updated");
-                                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                             });
                                          }
                                      });
                                  }else if(department === 'Transport'){
                                     console.log("updare rooute entered")
-                                         var update_transport = "UPDATE JFK88129.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                         var update_transport = "UPDATE HWL36879.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                          conn.query(update_transport,function(err,data){
                                              if(err){
                                                  console.log(err);
                                              }else{
                                                  conn.close(function(){
                                                      console.log("data updated");
-                                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                 });
                                              }
                                          });
                                      }else if(department === 'Electricity'){
                                         console.log("updare rooute entered")
-                                             var update_electricity = "UPDATE JFK88129.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                             var update_electricity = "UPDATE HWL36879.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                              conn.query(update_electricity,function(err,data){
                                                  if(err){
                                                      console.log(err);
                                                  }else{
                                                      conn.close(function(){
                                                          console.log("data updated");
-                                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                     });
                                                  }
                                              });
@@ -380,7 +381,7 @@ router.get("/updateaccept",(req,res)=>{
 })
 
 router.get("/updateresolve",(req,res)=>{
-    var id = req.query.id;
+    var complaintnumber = req.query.complaintnumber;
     var department = req.query.dept;
     var accept = 0;
     var submitted = 0 ;
@@ -391,105 +392,105 @@ router.get("/updateresolve",(req,res)=>{
            console.log(err);
        }else if(department === 'Education'){
            console.log("updare rooute entered")
-                var update_education = "UPDATE JFK88129.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                var update_education = "UPDATE HWL36879.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                 conn.query(update_education,function(err,data){
                     if(err){
                         console.log(err);
                     }else{
                         conn.close(function(){
                             console.log("data updated");
-                            res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                            res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                        });
                     }
                 });
             }else if(department === 'Health'){
                 console.log("updare route entered")
-                     var update_health = "UPDATE JFK88129.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                     var update_health = "UPDATE HWL36879.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                      conn.query(update_health,function(err,data){
                          if(err){
                              console.log(err);
                          }else{
                              conn.close(function(){
                                  console.log("data updated");
-                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                             });
                          }
                      });
                  }else if(department === 'Civil Services'){
                     console.log("updare rooute entered")
-                         var update_civil = "UPDATE JFK88129.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                         var update_civil = "UPDATE HWL36879.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                          conn.query(update_civil,function(err,data){
                              if(err){
                                  console.log(err);
                              }else{
                                  conn.close(function(){
                                      console.log("data updated");
-                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                 });
                              }
                          });
                      }else if(department === 'Finance'){
                         console.log("updare rooute entered")
-                             var update_finance = "UPDATE JFK88129.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                             var update_finance = "UPDATE HWL36879.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                              conn.query(update_finance,function(err,data){
                                  if(err){
                                      console.log(err);
                                  }else{
                                      conn.close(function(){
                                          console.log("data updated");
-                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                     });
                                  }
                              });
                          }else if(department === 'Agriculture'){
                             console.log("updare rooute entered")
-                                 var update_agriculture = "UPDATE JFK88129.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                 var update_agriculture = "UPDATE HWL36879.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                  conn.query(update_agriculture,function(err,data){
                                      if(err){
                                          console.log(err);
                                      }else{
                                          conn.close(function(){
                                              console.log("data updated");
-                                             res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                             res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                         });
                                      }
                                  });
                              }else if(department === 'PWC'){
                                 console.log("updare rooute entered")
-                                     var update_pwc = "UPDATE JFK88129.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                     var update_pwc = "UPDATE HWL36879.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                      conn.query(update_pwc,function(err,data){
                                          if(err){
                                              console.log(err);
                                          }else{
                                              conn.close(function(){
                                                  console.log("data updated");
-                                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                             });
                                          }
                                      });
                                  }else if(department === 'Transport'){
                                     console.log("updare rooute entered")
-                                         var update_transport = "UPDATE JFK88129.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                         var update_transport = "UPDATE HWL36879.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                          conn.query(update_transport,function(err,data){
                                              if(err){
                                                  console.log(err);
                                              }else{
                                                  conn.close(function(){
                                                      console.log("data updated");
-                                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                 });
                                              }
                                          });
                                      }else if(department === 'Electricity'){
                                         console.log("updare rooute entered")
-                                             var update_electricity = "UPDATE JFK88129.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                             var update_electricity = "UPDATE HWL36879.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                              conn.query(update_electricity,function(err,data){
                                                  if(err){
                                                      console.log(err);
                                                  }else{
                                                      conn.close(function(){
                                                          console.log("data updated");
-                                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                     });
                                                  }
                                              });
@@ -500,7 +501,7 @@ router.get("/updateresolve",(req,res)=>{
 })
 
 router.get("/updaterejected",(req,res)=>{
-    var id = req.query.id;
+    var complaintnumber = req.query.complaintnumber;
     var department = req.query.dept;
     var accept = 0;
     var submitted = 0 ;
@@ -511,105 +512,105 @@ router.get("/updaterejected",(req,res)=>{
            console.log(err);
        }else if(department === 'Education'){
            console.log("updare rooute entered")
-                var update_education = "UPDATE JFK88129.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                var update_education = "UPDATE HWL36879.EDUCATION SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                 conn.query(update_education,function(err,data){
                     if(err){
                         console.log(err);
                     }else{
                         conn.close(function(){
                             console.log("data updated");
-                            res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                            res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                        });
                     }
                 });
             }else if(department === 'Health'){
                 console.log("updare route entered")
-                     var update_health = "UPDATE JFK88129.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                     var update_health = "UPDATE HWL36879.HEALTH SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                      conn.query(update_health,function(err,data){
                          if(err){
                              console.log(err);
                          }else{
                              conn.close(function(){
                                  console.log("data updated");
-                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                             });
                          }
                      });
                  }else if(department === 'Civil Services'){
                     console.log("updare rooute entered")
-                         var update_civil = "UPDATE JFK88129.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                         var update_civil = "UPDATE HWL36879.CIVIL SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                          conn.query(update_civil,function(err,data){
                              if(err){
                                  console.log(err);
                              }else{
                                  conn.close(function(){
                                      console.log("data updated");
-                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                 });
                              }
                          });
                      }else if(department === 'Finance'){
                         console.log("updare rooute entered")
-                             var update_finance = "UPDATE JFK88129.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                             var update_finance = "UPDATE HWL36879.FINANCE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                              conn.query(update_finance,function(err,data){
                                  if(err){
                                      console.log(err);
                                  }else{
                                      conn.close(function(){
                                          console.log("data updated");
-                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                     });
                                  }
                              });
                          }else if(department === 'Agriculture'){
                             console.log("updare rooute entered")
-                                 var update_agriculture = "UPDATE JFK88129.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                 var update_agriculture = "UPDATE HWL36879.AGRICULTURE SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                  conn.query(update_agriculture,function(err,data){
                                      if(err){
                                          console.log(err);
                                      }else{
                                          conn.close(function(){
                                              console.log("data updated");
-                                             res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                             res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                         });
                                      }
                                  });
                              }else if(department === 'PWC'){
                                 console.log("updare rooute entered")
-                                     var update_pwc = "UPDATE JFK88129.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                     var update_pwc = "UPDATE HWL36879.PWC SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                      conn.query(update_pwc,function(err,data){
                                          if(err){
                                              console.log(err);
                                          }else{
                                              conn.close(function(){
                                                  console.log("data updated");
-                                                 res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                 res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                             });
                                          }
                                      });
                                  }else if(department === 'Transport'){
                                     console.log("updare rooute entered")
-                                         var update_transport = "UPDATE JFK88129.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                         var update_transport = "UPDATE HWL36879.TRANSPORT SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                          conn.query(update_transport,function(err,data){
                                              if(err){
                                                  console.log(err);
                                              }else{
                                                  conn.close(function(){
                                                      console.log("data updated");
-                                                     res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                     res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                 });
                                              }
                                          });
                                      }else if(department === 'Electricity'){
                                         console.log("updare rooute entered")
-                                             var update_electricity = "UPDATE JFK88129.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE ID="+id+";"
+                                             var update_electricity = "UPDATE HWL36879.ELECTRICITY SET ACCEPTED="+accept+", REJECTED="+rejected+", SUBMITTED="+submitted+", RESOLVED="+resolved+" WHERE COMPLAINTNUMBER="+complaintnumber+";"
                                              conn.query(update_electricity,function(err,data){
                                                  if(err){
                                                      console.log(err);
                                                  }else{
                                                      conn.close(function(){
                                                          console.log("data updated");
-                                                         res.redirect("/admin/checkinfo?id="+id+"&dept="+department);
+                                                         res.redirect("/admin/checkinfo?complaintnumber="+complaintnumber+"&dept="+department);
                                                     });
                                                  }
                                              });
