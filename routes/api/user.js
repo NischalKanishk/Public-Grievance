@@ -28,7 +28,7 @@ router.post('/forminput',(req,res)=>{
 console.log(department);
     ibmdb.open(connStr,function(err,conn){
         if(err){
-            Console.log(err);
+            console.log(err);
         }else if(department === 'Education'){
             var education = "INSERT INTO JFK88129.EDUCATION (firstname , lastname , email , phonenumber , address , city , zip , report , department) VALUES ('"+firstname+"' , '"+lastname+"' , '"+email+"' , '"+phonenumber+"' , '"+address+"' , '"+city+"' , '"+zip+"' , '"+reporttext+"' , '"+department+"');";
         conn.query(education,function(err,data){  //required

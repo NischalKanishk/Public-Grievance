@@ -4,8 +4,7 @@
   "description": "Report portal for different public services",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon server.js",
-    "server": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
