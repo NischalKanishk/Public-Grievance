@@ -23,11 +23,11 @@
           <% for(var i=0; i < info.length; i++) { %>        
               <tr>
                 
-                <th scope="row"><%= info[i].ID %></th>
+                <th scope="row"><%= info[i].COMPLAINTNUMBER %></th>
                 <td><%= info[i].FIRSTNAME %> <%= info[i].LASTNAME %></td>
                 <td><%= info[i].EMAIL %></td>
                 <td><%= info[i].PHONENUMBER %></td>
-                <td><%= info[i].ADDRESS %></td>
+                <td><%= info[i].HOMEADDRESS %></td>
                 <td><%= info[i].CITY %></td>
                 <td><%= info[i].ZIP %></td>
                 <% if(info[i].ACCEPTED == 1){ %>
@@ -51,15 +51,15 @@
     
      <button type="button" class="ui green basic button">
               <i class="fas fa-thumbs-up"></i>
-             <a href="/admin/updateaccept?id=<%= info[i].ID %>&dept=<%= info[i].DEPARTMENT %>">ACCEPT</a>
+             <a href="/admin/updateaccept?complaintnumber=<%= info[i].COMPLAINTNUMBER %>&dept=<%= info[i].DEPARTMENT %>">ACCEPT</a>
             </button>
             <button type="button" class="ui orange basic button">
               <i class="fas fa-thumbs-down"></i>
-              <a href="/admin/updateresolve?id=<%= info[i].ID %>&dept=<%= info[i].DEPARTMENT %>">RESOLVE</a>
+              <a href="/admin/updateresolve?complaintnumber=<%= info[i].COMPLAINTNUMBER %>&dept=<%= info[i].DEPARTMENT %>">RESOLVE</a>
             </button>
             <button  type="button"class="ui red basic button">
             <i class="fas fa-times"></i>
-            <a href="/admin/updaterejected?id=<%= info[i].ID %>&dept=<%= info[i].DEPARTMENT %>">REJECT</a>
+            <a href="/admin/updaterejected?complaintnumber=<%= info[i].COMPLAINTNUMBER %>&dept=<%= info[i].DEPARTMENT %>">REJECT</a>
           </button> 
           <% } %>
   </div>
